@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 public class Dynamique {
 
@@ -46,38 +47,39 @@ public class Dynamique {
 
 
     public static void dyna(SacADos sac, ArrayList<Item> items) {
-        float[][] table = new float[items.size()][(int)sac.getPoidsMax()+1];
-        for(int c=0; c < sac.getPoidsMax()+1;++c){
-            table[0][c]=items.get(0).getPoids()>c? 0:items.get(0).getPrix();
+        int PRECISION= 10;
+        int nbItem = items.size();
+        int PoidsMax = (int)sac.getPoidsMax()*PRECISION;
+        float[][] table = new float[nbItem][PoidsMax+1];
+        for(int c=0; c < PoidsMax;++c){
+            table[0][c]=items.get(0).getPoids()* PRECISION >c? 0:items.get(0).getPrix();
         }
-        for (int l = 1; l< items.size();l++){
+        for (int l = 1; l< nbItem;++l){
             Item it = items.get(l);
-            for(int c=0; c <= sac.getPoidsMax();c++){
-                table[l][c] = it.getPoids() > c ? table[l-1][c]:Math.max(table[l-1][c],table[l-1][(int)(c-it.getPoids())]+it.getPrix());
+            for(int c=0; c <= PoidsMax;++c){
+                table[l][c] = it.getPoids()*PRECISION > c ? table[l-1][c]:Math.max(table[l-1][c],table[l-1][(int)(c-it.getPoids()*PRECISION)]+it.getPrix());
             }
         }
-//        for (float[] ligne: table) {
-//            for (float colonne: ligne) {
-//                System.out.print(colonne + ",");
-//            }
-//            System.out.println("\n");
-//        }
-        int i=items.size()-1,j=(int)sac.getPoidsMax();
-        while (table[i][j]==(table[i][j-1])){
-            j--;
-        }
-        System.out.println("ok");
-        while(j>0){
-            System.out.println("cool");
-            while (i>0 && table[i][j]==(table[i-1][j])){
-                i--;
-                j=(int)(j-items.get(i).getPoids());
-                if (j>0){
-                    sac.addItem(items.get(i));
-                    i--;
-                }
+
+        for (float[] ligne: table) {
+            for (float colonne: ligne) {
+                System.out.print(colonne + ",");
             }
+            System.out.println("\n");
         }
-        System.out.println("super");
+
+        int i=nbItem-1;
+        int j=PoidsMax;
+
+        while(table[i][j] == table[i][j-1])
+            --j;
+        while(j > 0) {
+            while (i > 0 && table[i][j] == table[i - 1][j])
+                --i;
+            j = j - (int) (items.get(i).getPoids()*PRECISION);
+            if (j >= 0)
+                sac.addItem(items.get(i));
+            --i;
+        }
     }
 }

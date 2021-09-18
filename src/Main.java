@@ -8,8 +8,8 @@ public class Main {
         SacADos sac2 = new SacADos(12);
         SacADos sac = new SacADos(4);
         //System.out.println(sac.toString());
-        Dynamique.dynamique(sac, Items);
-        Dynamique.dyna(sac2,Items2);
-        System.out.println(sac2.toString());
+//        Dynamique.dynamique(sac, Items);
+        Dynamique.dyna(sac,Items);
+        System.out.println(sac.toString());
     }
 }
