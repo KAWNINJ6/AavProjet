@@ -24,4 +24,12 @@ public class BTreeCS extends BTreeCA{
     public BTreeCS getPere(){
         return this.pere;
     }
+
+    public float getPoids(){
+        float res =0;
+        if (this.pere!=this)
+            res = this.getRootValue() + pere.getRootValue();
+        return res;
+    }
+
 }

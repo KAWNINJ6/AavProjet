@@ -3,35 +3,27 @@ public interface BTree {
     boolean isEmpty();
     /* accesseur : renvoie vrai si l'arbre ne contient aucun element */
 
-    int getRootValue() throws Exception;
+    float getRootValue();
     /* accesseur : renvoie la valeur contenue a la racine de l'arbre */
 
-    BTree getLeftTree() throws Exception;
+    BTree getLeftTree();
     /* accesseur : renvoie le sous-arbre gauche de l'arbre */
 
-    BTree getRightTree() throws Exception;
+    BTree getRightTree();
     /* accesseur : renvoie le sous-arbre droit de l'arbre */
 
-    int getLeftValue() throws Exception;
+    float getLeftValue();
     /* accesseur : renvoie la valeur a la racine du sous-arbre gauche */
 
-    int getRightValue() throws Exception;
+    float getRightValue();
     /* accesseur : renvoie la valeur a la racine du sous-arbre droit */
 
-    void setRootValue(int val) throws Exception;
-    /* modificateur : ajoute une valeur a la racine */
-
-    void setLeftTree(BTree leftTree) throws Exception;
+    void setLeftTree(BTree leftTree);
     /* modificateur : ajoute un sous-arbre gauche a la racine de l'arbre */
 
-    void setRightTree(BTree rightTree) throws Exception;
+    void setRightTree(BTree rightTree);
     /* modificateur : ajoute un sous-arbre droit a la racine de l'arbre */
 
-    void setLeftValue(int leftSubRoot) throws Exception;
-    /* modificateur : ajoute une valeur en fils gauche de la racine */
-
-    void setRightValue(int rightSubRoot) throws Exception;
-    /* modificateur : ajoute une valeur en fils droit de la racine */
 
     float getPoids();
 }
