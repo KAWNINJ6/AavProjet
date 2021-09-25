@@ -1,7 +1,6 @@
 public class BTreeCA implements BTree{
 
-    private Integer value;
-    private float poids;
+    private Item item;
     private BTreeCA filsGauche;
     private BTreeCA filsDroit;
 
@@ -13,9 +12,8 @@ public class BTreeCA implements BTree{
         this.filsDroit = new BTreeCA();
     }
 
-    public BTreeCA(Integer value, float poids, BTreeCA filsGauche, BTreeCA filsDroit){
+    public BTreeCA(Integer value, BTreeCA filsGauche, BTreeCA filsDroit){
         this.value = value;
-        this.poids = poids;
         this.filsGauche = filsGauche;
         this.filsDroit = filsDroit;
     }
@@ -26,59 +24,41 @@ public class BTreeCA implements BTree{
     }
 
     @Override
-    public int getRootValue() throws Exception {
-        return this.value;
+    public float getRootValue(){
+        return item.getPrix();
     }
 
     @Override
-    public BTree getLeftTree() throws Exception {
+    public BTree getLeftTree()  {
         return this.filsGauche;
     }
 
     @Override
-    public BTree getRightTree() throws Exception {
+    public BTree getRightTree() {
         return this.filsDroit;
     }
 
     @Override
-    public int getLeftValue() throws Exception {
-        return this.filsGauche.value;
+    public float getLeftValue() {
+        return this.filsGauche.getRootValue();
     }
 
     @Override
-    public int getRightValue() throws Exception {
-        return this.filsDroit.value;
+    public float getRightValue() {
+        return this.filsDroit.getRootValue();
     }
 
     @Override
-    public void setRootValue(int val) throws Exception {
-        this.value = val;
-    }
-
-    @Override
-    public void setLeftTree(BTree leftTree) throws Exception {
+    public void setLeftTree(BTree leftTree) {
         this.filsGauche = (BTreeCA) leftTree;
     }
 
     @Override
-    public void setRightTree(BTree rightTree) throws Exception {
+    public void setRightTree(BTree rightTree) {
         this.filsDroit = (BTreeCA) rightTree;
     }
 
-    @Override
-    public void setLeftValue(int leftSubRoot) throws Exception {
-        this.filsGauche.value = leftSubRoot;
-    }
 
-    @Override
-    public void setRightValue(int rightSubRoot) throws Exception {
-        this.filsDroit.value = rightSubRoot;
-    }
-
-    @Override
-    public float getPoids() {
-        return this.poids;
-    }
 
     public int sizeOfTree(){
         if (this.isEmpty()){

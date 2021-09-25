@@ -46,7 +46,7 @@ public class Dynamique {
 //    }
 
 
-    public static void dyna(SacADos sac, ArrayList<Item> items) {
+    public static void resoudre(SacADos sac, ArrayList<Item> items) {
         int PRECISION= 10;
         int nbItem = items.size();
         int PoidsMax = (int)sac.getPoidsMax()*PRECISION;

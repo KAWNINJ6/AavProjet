@@ -1,5 +1,5 @@
 public class BTreeCS extends BTreeCA{
-    private BTreeCS père;
+    private BTreeCS pere;
 
     public BTreeCS(){
         super();
@@ -7,21 +7,21 @@ public class BTreeCS extends BTreeCA{
 
     public BTreeCS(Integer value){
         super(value);
-        this.père = this;
+        this.pere = this;
     }
 
-    public BTreeCS(Integer value, float poids, BTreeCS filsGauche, BTreeCS filsDroit){
-        super(value, poids, filsGauche, filsDroit);
-        this.père = this;
-        filsGauche.setPère(this);
-        filsDroit.setPère(this);
+    public BTreeCS(Integer value, BTreeCS filsGauche, BTreeCS filsDroit){
+        super(value, filsGauche, filsDroit);
+        this.pere = this;
+        filsGauche.setPere(this);
+        filsDroit.setPere(this);
     }
 
-    public void setPère(BTreeCS père){
-        this.père = père;
+    public void setPere(BTreeCS pere){
+        this.pere = pere;
     }
 
-    public BTreeCS getPère(){
-        return this.père;
+    public BTreeCS getPere(){
+        return this.pere;
     }
 }

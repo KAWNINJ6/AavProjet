@@ -9,7 +9,7 @@ public class Main {
         SacADos sac = new SacADos(4);
         //System.out.println(sac.toString());
 //        Dynamique.dynamique(sac, Items);
-        Dynamique.dyna(sac,Items);
+        Dynamique.resoudre(sac,Items);
         System.out.println(sac.toString());
     }
 }
