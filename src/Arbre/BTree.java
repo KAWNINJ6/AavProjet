@@ -1,9 +1,11 @@
+package Arbre;
+
 public interface BTree {
 
     boolean isEmpty();
     /* accesseur : renvoie vrai si l'arbre ne contient aucun element */
 
-    float getRootValue();
+    Integer getRootValue();
     /* accesseur : renvoie la valeur contenue a la racine de l'arbre */
 
     BTree getLeftTree();
@@ -12,10 +14,10 @@ public interface BTree {
     BTree getRightTree();
     /* accesseur : renvoie le sous-arbre droit de l'arbre */
 
-    float getLeftValue();
+    Integer getLeftValue();
     /* accesseur : renvoie la valeur a la racine du sous-arbre gauche */
 
-    float getRightValue();
+    Integer getRightValue();
     /* accesseur : renvoie la valeur a la racine du sous-arbre droit */
 
     void setLeftTree(BTree leftTree);
@@ -25,5 +27,4 @@ public interface BTree {
     /* modificateur : ajoute un sous-arbre droit a la racine de l'arbre */
 
 
-    float getPoids();
 }

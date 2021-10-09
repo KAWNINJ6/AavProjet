@@ -1,9 +1,11 @@
+package SacADos;
+
 public class Item implements Comparable<Item>{
     private String nom;
-    private float poids;
-    private float prix;
+    private int poids;
+    private int prix;
 
-    public Item(String nom, float poids, float prix) {
+    public Item(String nom, int poids, int prix) {
         this.nom = nom;
         this.poids = poids;
         this.prix = prix;
@@ -13,17 +15,17 @@ public class Item implements Comparable<Item>{
         return nom;
     }
 
-    public float getPoids() {
+    public int getPoids() {
         return poids;
     }
 
-    public float getPrix() {
+    public int getPrix() {
         return prix;
     }
 
     @Override
     public int compareTo(Item it){
-        return Float.compare((getPrix()/getPoids()),(it.getPrix()/it.getPoids()));
+        return Float.compare(((float) getPrix()/(float)getPoids()),((float)it.getPrix()/(float)it.getPoids()));
     }
 
     public String toString() {
