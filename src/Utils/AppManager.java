@@ -25,5 +25,8 @@ public class AppManager {
         } catch (FileNotFoundException e) {
             throw new IllegalArgumentException("le fichier spécifié est introuvable");
         }
-        System.out.println(sac.toString());}
+        System.out.println(sac);
+        System.out.println("le poids du sac : " + sac.getPoids());
+        System.out.println("la valeur du sac : " + sac.getPrix());
+    }
 }

@@ -28,18 +28,18 @@ public class SacADos {
     }
 
     public SacADos(int poidsMax) {
-        objets = new ArrayList<Item>();
+        objets = new ArrayList<>();
         this.poidsMax = poidsMax;
     }
 
     public static ArrayList<Item> rdFile(String path) throws FileNotFoundException {
-        ArrayList<Item> obj = new ArrayList<Item>();
+        ArrayList<Item> obj = new ArrayList<>();
         Scanner scan = new Scanner(new File(path));
         while(scan.hasNextLine()){
             String line = scan.nextLine();
             String[] data = line.split(";");
             try{
-                obj.add(new Item(data[0],Integer.parseInt(data[1]), Integer.parseInt(data[2])));
+                obj.add(new Item(data[0],Integer.parseInt(data[1].trim()), Integer.parseInt(data[2].trim())));
             }catch (ArrayIndexOutOfBoundsException e){
                 throw new IllegalArgumentException("la ligne " + line + " n'est pas bien formatée");
             }
@@ -59,9 +59,17 @@ public class SacADos {
         return x;
     }
 
+    public int getPrix(){
+        int x = 0;
+        for (Item item:objets) {
+            x+= item.getPrix();
+        }
+        return x;
+    }
+
     public void resoudre(String Methode, String dataPath) throws FileNotFoundException {
         Resolution resolution;
-        ArrayList<Item> Items = new ArrayList<Item>(SacADos.rdFile(dataPath));
+        ArrayList<Item> Items = new ArrayList<>(SacADos.rdFile(dataPath));
         switch(Methode) {
             case "GLOUTONNE":
                 resolution = new Glouton(this, Items);
@@ -79,7 +87,7 @@ public class SacADos {
     }
 
     public String toString(){
-        StringBuilder sb = new StringBuilder("");
+        StringBuilder sb = new StringBuilder();
         objets.forEach((item)->sb.append(item.toString()));
         return sb.toString();
     }

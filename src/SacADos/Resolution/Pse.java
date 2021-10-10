@@ -63,15 +63,10 @@ public class Pse extends Glouton{
 
         int[] PoidsPrix = {0,0};
         getPoidsPrix((BTreeCS) noeud.getRightTree(), PoidsPrix);
-        System.out.println( PoidsPrix[1] + " : " + PoidsPrix[0] + " " + poidsMax);
         if (PoidsPrix[1] >= borneInf && PoidsPrix[0] <= poidsMax) {
             meilleurnoeud = (BTreeCS) noeud.getRightTree();
             borneInf = PoidsPrix[1];
-            System.out.println("ok");
         }
-
-        PoidsPrix= new int[]{0, 0};
-        getPoidsPrix(noeud,PoidsPrix);
 //        if (index < items.size()-1 && PoidsPrix[0] < poidsMax){
 //            creerArbre(index+1, (BTreeCS) noeud.getRightTree(),borneInf);
 //            int borneMax = borneSup - items.get(index).getPrix();
@@ -79,7 +74,7 @@ public class Pse extends Glouton{
 //                creerArbre(index+1,(BTreeCS) noeud.getLeftTree(),borneMax);
 //            }
 //        }
-        if (index < items.size()-1 && PoidsPrix[0] < poidsMax) {
+        if (index < items.size()-1) {
             int borneMax = borneSup - items.get(index).getPrix();
             if (borneSup>=borneInf) {
                 creerArbre(index + 1, (BTreeCS) noeud.getRightTree(), borneSup);
