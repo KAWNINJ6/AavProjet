@@ -1,30 +1,31 @@
 package Arbre;
 
+/** Interface pour les arbres binaires */
 public interface BTree {
 
+    /** accesseur : renvoie vrai si l'arbre ne contient aucun element */
     boolean isEmpty();
-    /* accesseur : renvoie vrai si l'arbre ne contient aucun element */
 
+    /** accesseur : renvoie la valeur contenue a la racine de l'arbre */
     Integer getRootValue();
-    /* accesseur : renvoie la valeur contenue a la racine de l'arbre */
 
+    /** accesseur : renvoie le sous-arbre gauche de l'arbre */
     BTree getLeftTree();
-    /* accesseur : renvoie le sous-arbre gauche de l'arbre */
 
+    /** accesseur : renvoie le sous-arbre droit de l'arbre */
     BTree getRightTree();
-    /* accesseur : renvoie le sous-arbre droit de l'arbre */
 
+    /** accesseur : renvoie la valeur a la racine du sous-arbre gauche */
     Integer getLeftValue();
-    /* accesseur : renvoie la valeur a la racine du sous-arbre gauche */
 
+    /** accesseur : renvoie la valeur a la racine du sous-arbre droit */
     Integer getRightValue();
-    /* accesseur : renvoie la valeur a la racine du sous-arbre droit */
 
+    /** modificateur : ajoute un sous-arbre gauche a la racine de l'arbre */
     void setLeftTree(BTree leftTree);
-    /* modificateur : ajoute un sous-arbre gauche a la racine de l'arbre */
 
+    /** modificateur : ajoute un sous-arbre droit a la racine de l'arbre */
     void setRightTree(BTree rightTree);
-    /* modificateur : ajoute un sous-arbre droit a la racine de l'arbre */
 
 
 }

@@ -1,6 +1,5 @@
 package Arbre;
 
-
 import java.io.PrintStream;
 
 public class BTreeCA implements BTree{
@@ -64,53 +63,51 @@ public class BTreeCA implements BTree{
         this.filsDroit = (BTreeCA) rightTree;
     }
 
-
-
-
-    public int sizeOfTree(){
-        if (this.isEmpty()){
-            return 0;
-        } else{
-            return 1 + this.filsGauche.sizeOfTree() + this.filsDroit.sizeOfTree();
-        }
-    }
-
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("");
+        StringBuilder sb = new StringBuilder();
         if (this.filsGauche != null)
-            sb.append("{").append(this.filsGauche.toString()).append("}");
+            sb.append("{").append(this.filsGauche).append("}");
         if (this.value==null)
             sb.append(" ");
         else
             sb.append(this.value);
         if (this.filsDroit != null)
-            sb.append("[").append(this.filsDroit.toString()).append("]");
+            sb.append("[").append(this.filsDroit).append("]");
         return sb.toString();
     }
 
+    /**
+     * methode d'affichage d'un arbre
+     * @param sb    le stringbuilder pour afficher l'arbre
+     * @param padding   la chaine qui contient l'indentation du noeud
+     * @param pointer   la chaine qui contient les sous-branches d'un arbre
+     * @param node   le noeud actuel
+     */
     public void traversePreOrder(StringBuilder sb, String padding, String pointer, BTreeCA node) {
         if (node != null) {
+            //ajout du nouveau noeud
             sb.append(padding);
             sb.append(pointer);
             sb.append(node.getRootValue() );
             sb.append("\n");
-
-            StringBuilder paddingBuilder = new StringBuilder(padding);
-            paddingBuilder.append("│  ");
-
-            String paddingForBoth = paddingBuilder.toString();
+            //ajout de la représentation des noeuds fils
+            String paddingForBoth = padding + "│  ";
             String pointerForRight = "└──";
             String pointerForLeft = (node.filsDroit != null) ? "├──" : "└──";
-
+            //ajout des noeuds fils
             traversePreOrder(sb, paddingForBoth, pointerForLeft, node.filsGauche);
             traversePreOrder(sb, paddingForBoth, pointerForRight, node.filsDroit);
         }
     }
 
+    /**
+     * affiche l'arbre sur le flux d'écriture
+     * @param os le flux
+     */
     public void print(PrintStream os) {
         StringBuilder sb = new StringBuilder();
         traversePreOrder(sb, "", "", this);
-        os.print(sb.toString());
+        os.print(sb);
     }
 }

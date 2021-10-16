@@ -13,8 +13,10 @@ public class Glouton extends Resolution{
     }
 
     public void resoudre(){
+        //trie le tableau des items à l'aide de la methode compareTo dans l'ordre décroissant
         items.sort(Collections.reverseOrder());
         for (Item item:items) {
+            //ajoute l'objet si la charge maximale du sac n'est pas depassee
             if(item.getPoids()+sac.getPoids() <= sac.getPoidsMax()){
                 sac.addItem(item);
             }

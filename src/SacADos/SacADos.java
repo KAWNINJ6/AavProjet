@@ -4,53 +4,57 @@ import SacADos.Resolution.Dynamique;
 import SacADos.Resolution.Glouton;
 import SacADos.Resolution.Pse;
 import SacADos.Resolution.Resolution;
+import Utils.AppManager;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
+/**
+ * SacADos est un sac qui a un poids maximal et qui peut accueillir des objets
+ */
 public class SacADos {
-
+    // liste d'objets present dans le sac
     private ArrayList<Item> objets;
+    // le poids maximal du sac
     private int poidsMax;
 
-    public int getPoidsMax() {
-        return poidsMax;
-    }
-
-    public ArrayList<Item> getObjets() {
-        return objets;
-    }
-
-    public SacADos(String path, int poidsMax) throws FileNotFoundException {
-        objets = rdFile(path);
-        this.poidsMax = poidsMax;
-    }
-
+    /**
+     * initialise un sac
+     * @param poidsMax le poids maximal que peut supporter le sac
+     */
     public SacADos(int poidsMax) {
         objets = new ArrayList<>();
         this.poidsMax = poidsMax;
     }
 
-    public static ArrayList<Item> rdFile(String path) throws FileNotFoundException {
-        ArrayList<Item> obj = new ArrayList<>();
-        Scanner scan = new Scanner(new File(path));
-        while(scan.hasNextLine()){
-            String line = scan.nextLine();
-            String[] data = line.split(";");
-            try{
-                obj.add(new Item(data[0],Integer.parseInt(data[1].trim()), Integer.parseInt(data[2].trim())));
-            }catch (ArrayIndexOutOfBoundsException e){
-                throw new IllegalArgumentException("la ligne " + line + " n'est pas bien formatée");
-            }
-        }
-        return obj;
+    /**
+     * getter de la charge maximal du sac
+     * @return le poids
+     */
+    public int getPoidsMax() {
+        return poidsMax;
     }
 
+    /**
+     * getter de la liste d'objets contenu dans le sac
+     * @return les objets
+     */
+    public ArrayList<Item> getObjets() {
+        return objets;
+    }
+
+    /**
+     * ajoute un item dans le sac
+     * @param it    item a ajouter
+     */
     public void addItem(Item it){
         objets.add(it);
     }
 
+    /**
+     * calcule le poids total des objets contenus dans le sac
+     * @return le poids des objets
+     */
     public int getPoids(){
         int x = 0;
         for (Item item:objets) {
@@ -59,6 +63,10 @@ public class SacADos {
         return x;
     }
 
+    /**
+     * calcule le prix total des objets contenus dans le sac
+     * @return le prix des objets
+     */
     public int getPrix(){
         int x = 0;
         for (Item item:objets) {
@@ -67,9 +75,15 @@ public class SacADos {
         return x;
     }
 
+    /**
+     * initialise une methode de resolution selon la methode donnee puis resoud le probleme
+     * @param Methode la methode voulue
+     * @param dataPath  l'emplacement du fichier contenant la liste des objets a mettre dans le sac
+     * @throws FileNotFoundException    si le fichier au chemin specifie n'existe pas
+     */
     public void resoudre(String Methode, String dataPath) throws FileNotFoundException {
         Resolution resolution;
-        ArrayList<Item> Items = new ArrayList<>(SacADos.rdFile(dataPath));
+        ArrayList<Item> Items = new ArrayList<>(AppManager.rdFile(dataPath));
         switch(Methode) {
             case "GLOUTONNE":
                 resolution = new Glouton(this, Items);
@@ -86,12 +100,20 @@ public class SacADos {
         resolution.resoudre();
     }
 
+    /**
+     * le toString d'un sac
+     * @return la liste de touts les objets contenus dans le sac
+     */
     public String toString(){
         StringBuilder sb = new StringBuilder();
+        sb.append("Charge Max : ").append(poidsMax).append("\n");
         objets.forEach((item)->sb.append(item.toString()));
         return sb.toString();
     }
 
+    /**
+     * vide le sac de ses objets
+     */
     public void vider() {
         objets.clear();
     }

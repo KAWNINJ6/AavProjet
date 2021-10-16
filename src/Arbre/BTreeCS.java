@@ -1,18 +1,14 @@
 package Arbre;
 
-import SacADos.Item;
-import com.sun.org.apache.bcel.internal.generic.RETURN;
-
+/**
+ * {@inheritDoc}
+ * Cet arbre binaire possede aussi le pere en attribut ce qui permet de remonter a la racine de l'arbre à partir d'un noeud
+ */
 public class BTreeCS extends BTreeCA{
     private BTreeCS pere;
 
     public BTreeCS(){
         super();
-    }
-
-    public BTreeCS(int value){
-        super(value);
-        this.pere = this;
     }
 
     public BTreeCS(BTreeCS pere){
@@ -24,17 +20,10 @@ public class BTreeCS extends BTreeCA{
         this.pere = pere;
     }
 
-    public BTreeCS(int value, BTreeCS filsGauche, BTreeCS filsDroit){
-        super(value, filsGauche, filsDroit);
-        this.pere = this;
-        filsGauche.setPere(this);
-        filsDroit.setPere(this);
-    }
-
-    public void setPere(BTreeCS pere){
-        this.pere = pere;
-    }
-
+    /**
+     * return le pere du noeud
+     * @return le pere
+     */
     public BTreeCS getPere(){
         return this.pere;
     }
