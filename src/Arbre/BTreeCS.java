@@ -15,6 +15,7 @@ public class BTreeCS extends BTreeCA{
         super();
         this.pere = pere;
     }
+
     public BTreeCS(int value, BTreeCS pere){
         super(value);
         this.pere = pere;
@@ -27,6 +28,5 @@ public class BTreeCS extends BTreeCA{
     public BTreeCS getPere(){
         return this.pere;
     }
-
 
 }

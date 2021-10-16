@@ -1,10 +1,8 @@
 package SacADos.Resolution;
 
 import Arbre.BTreeCS;
-
 import SacADos.Item;
 import SacADos.SacADos;
-
 import java.io.PrintStream;
 import java.util.ArrayList;
 

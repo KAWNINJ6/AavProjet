@@ -12,6 +12,12 @@ public abstract class Resolution {
     protected SacADos sac;
     //la liste d'objets à inserer dans le sac
     protected ArrayList<Item> items;
+
+    /**
+     * initialise la resolution avec un sac avec une capacité max et une liste d'items
+     * @param sac   le sac à remplir
+     * @param items la liste d'items
+     */
     public Resolution(SacADos sac, ArrayList<Item> items){
         this.sac=sac;
         this.items=items;

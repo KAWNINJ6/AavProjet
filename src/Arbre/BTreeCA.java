@@ -2,21 +2,35 @@ package Arbre;
 
 import java.io.PrintStream;
 
+/**
+ * Représente un arbre binaire
+ */
 public class BTreeCA implements BTree{
-
     private Integer value;
     private BTreeCA filsGauche;
     private BTreeCA filsDroit;
 
-
+    /**
+     * Initialise un arbre vide
+     */
     public BTreeCA(){}
 
+    /**
+     * Initialise un arbre avec une valeur
+     * @param value la valeur
+     */
     public BTreeCA(int value){
         this.value = value;
         this.filsGauche = new BTreeCA();
         this.filsDroit = new BTreeCA();
     }
 
+    /**
+     * Initialise un arbre avec une valeur ainsi que deux branche fils
+     * @param value La valeur
+     * @param filsGauche    Arbre lié à la branche(fils) gauche
+     * @param filsDroit     Arbre lié à la branche(fils) droit
+     */
     public BTreeCA(int value, BTreeCA filsGauche, BTreeCA filsDroit){
         this.value = value;
         this.filsGauche = filsGauche;

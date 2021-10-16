@@ -6,6 +6,9 @@ import SacADos.SacADos;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Resolution par méthode gloutonne, avec une complexité linéaire
+ */
 public class Glouton extends Resolution{
 
     public Glouton(SacADos sac, ArrayList<Item> items) {

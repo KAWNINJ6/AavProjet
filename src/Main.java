@@ -14,6 +14,5 @@ public class Main {
         AppManager app = new AppManager();
         app.checkInput(args);
         app.start(args);
-
     }
 }
