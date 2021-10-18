@@ -3,7 +3,6 @@ package SacADos.Resolution;
 import Arbre.BTreeCS;
 import SacADos.Item;
 import SacADos.SacADos;
-import java.io.PrintStream;
 import java.util.ArrayList;
 
 /**
@@ -52,7 +51,7 @@ public class Pse extends Glouton{
      * ajoute recursivement les items a partir du meilleur noeud
      * @param meilleurnoeud le noeud de la meilleur branche
      */
-    public void ajoutRes( BTreeCS meilleurnoeud){
+    public void ajoutRes(BTreeCS meilleurnoeud){
         //ajoute l'item de l'indice de la valeur du noeud dans le sac
         if (meilleurnoeud.getRootValue()!=null)
             sac.addItem(items.get(meilleurnoeud.getRootValue()));

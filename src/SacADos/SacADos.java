@@ -106,7 +106,7 @@ public class SacADos {
      */
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        sb.append("Charge Max : ").append(poidsMax).append("\n");
+        sb.append("Charge Max : ").append(poidsMax).append("\n").append(System.getProperty("line.separator"));
         objets.forEach((item)->sb.append(item.toString()));
         return sb.toString();
     }
