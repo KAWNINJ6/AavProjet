@@ -42,7 +42,10 @@ public class AppManager {
         SacADos sac = new SacADos(Integer.parseInt(args[1]));
         //essaye de resoudre le sac
         try {
+            long start = System.currentTimeMillis();
             sac.resoudre(args[2],args[0]);
+            long finish = System.currentTimeMillis();
+            System.out.println("temps: "+(finish-start));
         } catch (FileNotFoundException e) {
             throw new IllegalArgumentException("le fichier spécifié est introuvable");
         }

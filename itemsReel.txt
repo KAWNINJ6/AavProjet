@@ -1,0 +1,40 @@
+Piles ; 26 ; 52
+Sac de toile ; 05 ; 13
+Scotch ; 16 ; 01
+Oreiller ; 95 ; 98
+Couteau suisse ; 85 ; 32
+Ficelle ; 20 ; 78
+Sac poubelle ; 96 ; 46
+Torchons ; 16 ; 49
+Casseroles ; 67 ; 15
+Glaciere ; 98 ; 13
+Cuvette ; 152 ; 106
+Boite plastique ; 46 ; 95
+Eponge ; 16 ; 46
+Allumette ; 05 ; 09
+Bouteille ; 56 ; 79
+Ustensiles cuisine ; 98 ; 164
+Thermos ; 56 ; 75
+Tablier ; 12 ; 05
+Cafetiere ; 164 ; 203
+Planche a decouper ; 43 ; 84
+Boussole ; 08 ; 46
+Carte ; 94 ; 46
+Jumelles ; 34 ; 76
+Anti-moustique ; 12 ; 49
+Sandales ; 82 ; 15
+Livres ; 124 ; 51
+Bottes ; 42 ; 42
+Creme solaire ; 62 ; 75
+Switch ; 30 ; 10
+Lampe ; 20 ; 50
+Sac de couchage ; 30 ; 80
+Camping gaz ; 50 ; 140
+Boite alluminium ; 20 ; 60
+Tente ; 40 ; 130
+Roue ; 60 ; 170
+Trousse ; 30 ; 100
+Cartes ; 10 ; 40
+Briquet ; 10 ; 10
+Maillet ; 50 ; 50
+Trousse de toillette ; 60 ; 20
