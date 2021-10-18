@@ -38,7 +38,7 @@ public class Pse extends Glouton{
         meilleurnoeud=racine;
 
 
-        creerArbre(0,racine,borneSup);
+        creerArbre(0,racine,borneSup,0,0);
         // affichage de l'arbre
 //        PrintStream os = new PrintStream(System.out);
 //        racine.print(os);
@@ -74,37 +74,33 @@ public class Pse extends Glouton{
         if (noeud.getPere()!=null)
             getPoidsPrix(noeud.getPere(),tab);
     }
-
     /**
      * cree l'ABR
      * @param index indice de la profondeur de l'arbre qui est la position de l'item dans la liste Items
      * @param noeud le noeud actuel
      * @param borneSup la borne superieure
      */
-    private void creerArbre(int index, BTreeCS noeud, int borneSup) {
-        //cree les 2 fils d'un noeud : cote droit on ajoute l'objet, cote gauche on le retire
-        noeud.setRightTree(new BTreeCS(index,noeud));
-        noeud.setLeftTree(new BTreeCS(noeud));
+    private void creerArbre(int index, BTreeCS noeud, int borneSup, int poids, int prix) {
 
-        int[] PoidsPrix = {0,0};
-        getPoidsPrix((BTreeCS) noeud.getRightTree(), PoidsPrix);
-        //si la solution du noeud droit est meilleur que le meilleur resultat actuel
-        if (PoidsPrix[1] >= borneInf && PoidsPrix[0] <= poidsMax) {
-            //nouveau meilleur noeud
-            meilleurnoeud = (BTreeCS) noeud.getRightTree();
-            //actualisation de la borne inferieure
-            borneInf = PoidsPrix[1];
-        }
-
-
-        int[] current = {0,0};
-        getPoidsPrix(noeud,current);
-        if (index < items.size()-1 && current[0] <= poidsMax) {
+        if (index < items.size()-1 && poids < poidsMax) {
+            //cree les 2 fils d'un noeud : cote droit on ajoute l'objet, cote gauche on le retire
+            noeud.setRightTree(new BTreeCS(index,noeud));
+            noeud.setLeftTree(new BTreeCS(noeud));
+            Item right = items.get(noeud.getRightValue());
+            int rightpoids=poids+right.getPoids();
+            int rightprix=prix+right.getPrix();
+            //si la solution du noeud droit est meilleur que le meilleur resultat actuel
+            if (rightprix >= borneInf && rightpoids <= poidsMax) {
+                //nouveau meilleur noeud
+                meilleurnoeud = (BTreeCS) noeud.getRightTree();
+                //actualisation de la borne inferieure
+                borneInf = rightprix;
+            }
             int borneMax = borneSup - items.get(index).getPrix();
             //si la borne superieure est inferieure a la borne inferieure alors on coupe l'arbre
-            if (borneSup>=borneInf) {
-                creerArbre(index + 1, (BTreeCS) noeud.getRightTree(), borneSup);
-                creerArbre(index + 1, (BTreeCS) noeud.getLeftTree(), borneMax);
+            if (borneMax>=borneInf) {
+                creerArbre(index + 1, (BTreeCS) noeud.getRightTree(), borneSup,rightpoids,rightprix);
+                creerArbre(index + 1, (BTreeCS) noeud.getLeftTree(), borneMax,poids,prix);
             }
         }
 
