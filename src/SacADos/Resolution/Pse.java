@@ -97,7 +97,9 @@ public class Pse extends Glouton{
         }
 
 
-        if (index < items.size()-1 && PoidsPrix[0] <= poidsMax) {
+        int[] current = {0,0};
+        getPoidsPrix(noeud,current);
+        if (index < items.size()-1 && current[0] <= poidsMax) {
             int borneMax = borneSup - items.get(index).getPrix();
             //si la borne superieure est inferieure a la borne inferieure alors on coupe l'arbre
             if (borneSup>=borneInf) {
